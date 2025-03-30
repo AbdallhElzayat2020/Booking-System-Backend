@@ -69,13 +69,10 @@
                     </div>
 
                     <div class="card card-primary">
-                        <div class="card-header"><h4>Forgoet Password</h4></div>
+                        <div class="card-header"><h4>Forgot Password</h4></div>
                         <div class="card-body">
-                            <p>
-                                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-                            </p>
 
-                            <x-auth-session-status class="mb-4" :status="session('status')"/>
+                            <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')"/>
 
                             <form method="POST" action="{{ route('password.email') }}" class="needs-validation" novalidate="">
                                 @csrf
