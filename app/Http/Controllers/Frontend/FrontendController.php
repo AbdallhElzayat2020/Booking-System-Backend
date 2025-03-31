@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Interfaces\frontendRepositoryInterface;
 
 class FrontendController extends Controller
 {
+    public $frontend;
+
+    public function __construct(frontendRepositoryInterface $frontend)
+    {
+        $this->frontend = $frontend;
+    }
+
     public function index()
     {
-        return view('frontend.home.index');
+        return $this->frontend->index();
     }
 }
