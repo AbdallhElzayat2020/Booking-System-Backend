@@ -15,5 +15,6 @@
 
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
+    @stack('css')
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
