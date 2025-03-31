@@ -1,10 +1,10 @@
 <?php
 
 
+use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
-
 
 /* Dashboard Routes */
 Route::group([
@@ -25,6 +25,9 @@ Route::group([
 ], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    /* Profile Route */
+    Route::get('profile',[ProfileController::class, 'index'])->name('profile');
 
 });
 
