@@ -16,10 +16,7 @@ class ProfileController extends Controller
     public function update(AdminProfileUpdateRequest $request)
     {
         // update Data
-
         dd($request->all());
-        $user = auth()->user()->id;
-
-
+        
     }
 }
