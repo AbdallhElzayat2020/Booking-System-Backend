@@ -25,7 +25,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Name <span class="text-danger">*</span> </label>
                                                     <div class="input_area">
-                                                        <input type="text" value="{{$user->name}}" name="name" placeholder="Name" required>
+                                                        <input type="text" value="{{old('name',$user->name)}}" name="name" placeholder="Name" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -33,7 +33,7 @@
                                                 <div class="my_listing_single">
                                                     <label>phone <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <input type="text" name="phone" value="{{$user->phone}}" placeholder="1234" required>
+                                                        <input type="text" name="phone" value="{{old('phone',$user->phone)}}" placeholder="1234" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -41,7 +41,7 @@
                                                 <div class="my_listing_single">
                                                     <label>email <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <input type="email" name="email" value="{{$user->email}}" placeholder="Email" required>
+                                                        <input type="email" name="email" value="{{old('email',$user->email)}}" placeholder="Email" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -49,7 +49,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Address <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <input type="text" name="address" value="{{$user->address}}" placeholder="Address" required>
+                                                        <input type="text" name="address" value="{{old('address',$user->address)}}" placeholder="Address" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,7 +58,7 @@
                                                     <label>About Me <span class="text-danger">*</span></label>
                                                     <div class="input_area">
                                                         <textarea cols="3" name="about" rows="3" placeholder="Your Intro Text"
-                                                                  required>{!! $user->about !!}</textarea>
+                                                                  required>{!! old('about',$user->about) !!}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Website</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="website" value="{{$user->website}}" placeholder="Website">
+                                                        <input type="text" name="website" value="{{old('website',$user->website)}}" placeholder="Website">
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,7 +74,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Facebook</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="fb_link" value="{{$user->fb_link}}" placeholder="Facebook Link">
+                                                        <input type="text" name="fb_link" value="{{old('fb_link',$user->fb_link)}}" placeholder="Facebook Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +82,7 @@
                                                 <div class="my_listing_single">
                                                     <label>X</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="x_link" value="{{$user->x_link}}" placeholder="X Link">
+                                                        <input type="text" name="x_link" value="{{old('x_link',$user->x_link)}}" placeholder="X Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                                 <div class="my_listing_single">
                                                     <label>LinkedIn</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="in_link" value="{{$user->in_link}}" placeholder="LinkedIn Link">
+                                                        <input type="text" name="in_link" value="{{old('in_link',$user->in_link)}}" placeholder="LinkedIn Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Whatsapp</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="wa_link" value="{{$user->wa_link}}" placeholder="Whatsapp Link">
+                                                        <input type="text" name="wa_link" value="{{old('wa_link',$user->wa_link)}}" placeholder="Whatsapp Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,7 +106,8 @@
                                                 <div class="my_listing_single">
                                                     <label>Instagram</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="instra_link" value="{{$user->instra_link}}" placeholder="Instagram Link">
+                                                        <input type="text" name="instra_link" value="{{old('instra_link',$user->instra_link)}}"
+                                                               placeholder="Instagram Link">
                                                     </div>
                                                 </div>
                                             </div>

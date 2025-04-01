@@ -96,13 +96,13 @@
                                 <div class="col-xl-12">
                                     <div class="wsus__login_imput">
                                         <label>name</label>
-                                        <input type="text" name="name" placeholder="Name" required autofocus>
+                                        <input type="text" name="name" value="{{old('name')}}" placeholder="Name" required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__login_imput">
                                         <label>email</label>
-                                        <input type="email" placeholder="Email" name="email" required>
+                                        <input type="email" placeholder="Email"  value="{{old('email')}}" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
