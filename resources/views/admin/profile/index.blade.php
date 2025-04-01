@@ -23,8 +23,11 @@
                             <h4>Update Profile</h4>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="row">
+                                    <input type="hidden" name="id" value="{{ auth()->user()->id}}">
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -47,6 +50,9 @@
                                                 <input type="file" name="banner" id="image-upload-2"/>
                                             </div>
                                         </div>
+                                        @error('banner')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
 
                                     <div class="col-md-6">
@@ -126,8 +132,6 @@
                                             <button class="btn btn-primary" type="submit">Update</button>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </form>
                         </div>

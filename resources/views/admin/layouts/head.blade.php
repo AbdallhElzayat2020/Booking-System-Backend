@@ -9,6 +9,7 @@
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{asset('assets/modules/summernote/summernote-bs4.css')}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('css')
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
