@@ -19,7 +19,7 @@ class ProfileController extends Controller
         return view('admin.profile.index', compact('user'));
     }
 
-    public function update(AdminProfileUpdateRequest $request)
+    public function update(AdminProfileUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
 
         $avatarPath = $this->handleFileUpload($request, 'avatar', $request->old_avatar);
@@ -40,9 +40,21 @@ class ProfileController extends Controller
         $user->wa_link = $request->wa_link;
         $user->instra_link = $request->instra_link;
         $user->save();
-        toastr()->success('Updated successfully');
+        toastr()->success('updated successfully');
         return redirect()->back();
+    }
 
+    public function passwordUpdate(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'password' => ['required', 'same:password_confirmation', 'min:8'],
+            'password_confirmation' => ['required', 'min:8', 'confirmed:password'],
+        ]);
 
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+        toastr()->success('updated successfully');
+        return redirect()->back();
     }
 }

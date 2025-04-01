@@ -146,6 +146,46 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Update Password</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('admin.profile.password.update') }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password">Password <span class="text-danger"> * </span></label>
+                                            <input type="text" class="form-control" name="password" required id="password">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password_confirmation">Confirm Password <span class="text-danger"> * </span></label>
+                                            <input type="text" class="form-control" name="password_confirmation" required id="password_confirmation">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Update</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
