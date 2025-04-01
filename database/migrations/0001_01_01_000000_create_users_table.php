@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('avatar')->default('/default/default-avatar.png');
-            $table->string('banner')->default('/assets/images/breadcrumb.jpg');
+            $table->string('banner')->default('/default/breadcrumb.jpg');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->text('about')->nullable();

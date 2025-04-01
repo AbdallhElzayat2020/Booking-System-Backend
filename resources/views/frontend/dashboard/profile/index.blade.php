@@ -23,33 +23,41 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-md-6">
                                                 <div class="my_listing_single">
-                                                    <label>Name</label>
+                                                    <label>Name <span class="text-danger">*</span> </label>
                                                     <div class="input_area">
-                                                        <input type="text" name="name" placeholder="Name">
+                                                        <input type="text" value="{{$user->name}}" name="name" placeholder="Name" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-md-6">
                                                 <div class="my_listing_single">
-                                                    <label>phone</label>
+                                                    <label>phone <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <input type="text" name="phone" placeholder="1234">
+                                                        <input type="text" name="phone" value="{{$user->phone}}" placeholder="1234" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-12">
                                                 <div class="my_listing_single">
-                                                    <label>email</label>
+                                                    <label>email <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <input type="Email" name="email" placeholder="Email">
+                                                        <input type="email" name="email" value="{{$user->email}}" placeholder="Email" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-12">
                                                 <div class="my_listing_single">
-                                                    <label>About Me</label>
+                                                    <label>Address <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <textarea cols="3" name="about" rows="3" placeholder="Your Text"></textarea>
+                                                        <input type="text" name="address" value="{{$user->address}}" placeholder="Address" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-12">
+                                                <div class="my_listing_single">
+                                                    <label>About Me <span class="text-danger">*</span></label>
+                                                    <div class="input_area">
+                                                        <textarea cols="3" name="about" rows="3" placeholder="Your Intro Text" required>{{$user->about}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,7 +65,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Website</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="website" placeholder="Website">
+                                                        <input type="text" name="website" value="{{$user->website}}" placeholder="Website">
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +73,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Facebook</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="fb_link" placeholder="Facebook Link">
+                                                        <input type="text" name="fb_link" value="{{$user->fb_link}}" placeholder="Facebook Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,7 +81,7 @@
                                                 <div class="my_listing_single">
                                                     <label>X</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="x_link" placeholder="X Link">
+                                                        <input type="text" name="x_link" value="{{$user->x_link}}" placeholder="X Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -81,7 +89,7 @@
                                                 <div class="my_listing_single">
                                                     <label>LinkedIn</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="in_link" placeholder="LinkedIn Link">
+                                                        <input type="text" name="in_link" value="{{$user->in_link}}" placeholder="LinkedIn Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +97,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Whatsapp</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="wa_link" placeholder="Whatsapp Link">
+                                                        <input type="text" name="wa_link" value="{{$user->wa_link}}" placeholder="Whatsapp Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +105,7 @@
                                                 <div class="my_listing_single">
                                                     <label>Instagram</label>
                                                     <div class="input_area">
-                                                        <input type="text" name="instra_link" placeholder="Instagram Link">
+                                                        <input type="text" name="instra_link" value="{{$user->instra_link}}" placeholder="Instagram Link">
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,17 +119,19 @@
                                     <div class="col-xl-4 col-md-5">
 
                                         <div class="my_listing_single">
-                                            <label for="">Avatar</label>
+                                            <label for="avatar">Avatar</label>
                                             <div class="profile_pic_upload">
-                                                <img src="images/user_large_img.jpg" name="avatar" alt="img" class="imf-fluid w-100">
+                                                <img src="{{asset($user->avatar)}}" name="avatar" alt="img" class="imf-fluid w-100">
+                                                <input type="hidden" name="old_avatar" value="{{$user->avatar}}">
                                                 <input type="file">
                                             </div>
                                         </div>
 
                                         <div class="my_listing_single">
-                                            <label for="">Banner</label>
+                                            <label for="banner">Banner</label>
                                             <div class="profile_pic_upload">
-                                                <img src="images/user_large_img.jpg" name="banner" alt="img" class="imf-fluid w-100">
+                                                <img src="{{asset($user->banner)}}" name="banner" alt="img" class="imf-fluid w-100">
+                                                <input type="hidden" name="old_banner" value="{{$user->banner}}">
                                                 <input type="file">
                                             </div>
                                         </div>
