@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminProfileUpdateRequest;
+use App\Interfaces\AdminProfileRepositoryInterface;
 use App\Models\User;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
@@ -13,48 +14,26 @@ class ProfileController extends Controller
 {
     use FileUploadTrait;
 
+
+    public $profile;
+
+    public function __construct(AdminProfileRepositoryInterface $profile)
+    {
+        $this->profile = $profile;
+    }
+
     public function index()
     {
-        $user = Auth::user();
-        return view('admin.profile.index', compact('user'));
+        return $this->profile->index();
     }
 
     public function update(AdminProfileUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
-
-        $avatarPath = $this->handleFileUpload($request, 'avatar', $request->old_avatar);
-        $bannerPath = $this->handleFileUpload($request, 'banner', $request->old_banner);
-
-        $user = Auth::user();
-        $user->avatar = !empty($avatarPath) ? $avatarPath : $request->old_avatar;
-        $user->banner = !empty($bannerPath) ? $bannerPath : $request->old_banner;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->about = $request->about;
-        $user->website = $request->website;
-        $user->fb_link = $request->fb_link;
-        $user->x_link = $request->x_link;
-        $user->in_link = $request->in_link;
-        $user->wa_link = $request->wa_link;
-        $user->instra_link = $request->instra_link;
-        $user->save();
-        toastr()->success('updated successfully');
-        return redirect()->back();
+        return $this->profile->update($request);
     }
 
     public function passwordUpdate(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $request->validate([
-            'password' => ['required', 'same:password_confirmation', 'min:8'],
-            'password_confirmation' => ['required', 'min:8', 'confirmed:password'],
-        ]);
-
-        $user = Auth::user();
-        $user->password = bcrypt($request->password);
-        $user->save();
-        toastr()->success('updated successfully');
-        return redirect()->back();
+        return $this->profile->passwordUpdate($request);
     }
 }
