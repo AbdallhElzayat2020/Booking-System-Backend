@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center text-white">
-                        <h4>Forgot Password</h4>
+                        <h4>Reset Password</h4>
                         <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('frontend.index') }}"> Home </a></li>
@@ -34,11 +34,6 @@
             <div class="row">
                 <div class="col-xxl-5 col-xl-6 col-md-9 col-lg-7 m-auto">
                     <div class="wsus__login_area">
-                        <p>
-                            Forgot your password? No problem. Just let us know your email address and we
-                            will email you a password reset link that will allow you to choose a new one.
-                        </p>
-
                         <!-- Session Status -->
                         @if($errors->get('email'))
                             <code>
