@@ -10,7 +10,7 @@
 <!-- Page Specific JS File -->
 <script src="{{asset('assets/js/page/index-0.js')}}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+<script src="{{asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
 <!-- Template JS File -->
 <script src="{{asset('assets/js/scripts.js')}}"></script>
 

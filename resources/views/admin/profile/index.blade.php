@@ -32,11 +32,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="avatar">Avatar <span class="text-danger"> * </span></label>
-                                            <div id="image-preview" class="image-preview mt-4">
+                                            <div id="image-preview" class="image-preview mt-4 avatar-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
                                                 <input type="file" name="avatar" id="image-upload"/>
+                                                <input type="hidden" name="old_avatar" value="{{$user->avatar}}">
                                             </div>
-                                            <img style="width: 150px; height: 150px" src="{{asset($user->avatar)}}" alt="">
                                             @error('avatar')
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror
@@ -46,9 +46,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="banner">Banner </label>
-                                            <div id="image-preview-2" class="image-preview mt-4">
+                                            <div id="image-preview-2" class="image-preview banner-preview mt-4">
                                                 <label for="image-upload-2" id="image-label-2">Choose File</label>
                                                 <input type="file" name="banner" id="image-upload-2"/>
+                                                <input type="hidden" name="old_banner" value="{{$user->banner}}">
                                             </div>
                                         </div>
                                         @error('banner')
@@ -143,8 +144,20 @@
     </section>
 @endsection
 @push('js')
-    <script src="{{asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
     <script>
+        $(document).ready(function () {
+            $('.avatar-preview').css({
+                'background-image': 'url({{ asset($user->avatar) }})',
+                'background-size': 'cover',
+                'background-position': 'center center'
+            })
+
+            $('.banner-preview').css({
+                'background-image': 'url({{ asset($user->banner) }})',
+                'background-size': 'cover',
+                'background-position': 'center center'
+            })
+        });
         $.uploadPreview({
             input_field: "#image-upload",   // Default: .image-upload
             preview_box: "#image-preview",  // Default: .image-preview
