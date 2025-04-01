@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\DashboardController;
 
 
-
 Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 
 //Route::middleware('auth')->group(function () {
@@ -20,7 +19,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], func
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); // user.dashboard
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index'); // user.dashboard
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 });
 
