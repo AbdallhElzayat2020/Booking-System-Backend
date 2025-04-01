@@ -18,9 +18,9 @@ Route::get('/', [FrontendController::class, 'index'])->name('frontend.index');
 Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); // user.dashboard
-
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile-password', [ProfileController::class, 'updatePassword'])->name('profile.password-update');
 
 });
 

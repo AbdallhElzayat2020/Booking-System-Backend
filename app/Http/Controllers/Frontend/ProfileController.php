@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\UserProfileUpdateRequest;
 use App\Traits\FileUploadTrait;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -17,7 +19,7 @@ class ProfileController extends Controller
         return view('frontend.dashboard.profile.index', compact('user'));
     }
 
-    public function update(UserProfileUpdateRequest $request)
+    public function update(UserProfileUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
         $avatarPath = $this->handleFileUpload($request, 'avatar', $request->old_avatar);
         $bannerPath = $this->handleFileUpload($request, 'banner', $request->old_banner);
@@ -38,6 +40,21 @@ class ProfileController extends Controller
         $user->instra_link = $request->instra_link;
         $user->save();
         toastr()->success('updated successfully');
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'same:password_confirmation', 'min:8'],
+            'password_confirmation' => ['required', 'min:8', 'confirmed:password'],
+        ]);
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        toastr()->success('Password updated successfully');
         return redirect()->back();
     }
 }
