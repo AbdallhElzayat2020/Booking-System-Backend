@@ -105,35 +105,41 @@
                                             <input type="text" class="form-control" value="{{$user->fb_link}}" name="fb_link" id="fb_link">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="x_link">X Link</label>
                                             <input type="text" class="form-control" name="x_link" value="{{$user->x_link}}" id="x_link">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="in_link">LinkedIn Link</label>
                                             <input type="text" class="form-control" name="in_link" value="{{$user->in_link}}" id="in_link">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="wa_link">WhatsApp Link</label>
                                             <input type="text" class="form-control" name="wa_link" value="{{$user->wa_link}}" id="wa_link">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="instra_link">Instagram Link</label>
                                             <input type="text" class="form-control" name="instra_link" value="{{$user->instra_link}}" id="instra_link">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit">Update</button>
                                         </div>
                                     </div>
+
                                 </div>
                             </form>
                         </div>

@@ -8,13 +8,16 @@ use Illuminate\Support\Str;
 
 trait FileUploadTrait
 {
-    public function handleFileUpload(Request $request, string $fileName, string $oldPath = null, $dir = 'uploads'): ?string
+    public function handleFileUpload(Request $request, string $fileName, ?string $oldPath = null, $dir = 'uploads'): ?string
     {
         if (!$request->hasFile($fileName)) {
             return null;
         }
 
-        if ($oldPath && File::exists(public_path($oldPath))) {
+        // delete old file
+        $exculudedFolder = '/default';
+
+        if ($oldPath && File::exists(public_path($oldPath)) && strpos($oldPath, $exculudedFolder) !== 0) {
             File::delete(public_path($oldPath));
         }
 
