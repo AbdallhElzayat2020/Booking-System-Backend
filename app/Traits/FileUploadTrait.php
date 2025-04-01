@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 trait FileUploadTrait
 {
-    public function handleFileUpload(Request $request, $fileName, $oldPath = null, $dir = 'uploads'): ?string
+    public function handleFileUpload(Request $request, string $fileName, string $oldPath = null, $dir = 'uploads'): ?string
     {
         if (!$request->hasFile($fileName)) {
             return null;
@@ -22,6 +22,7 @@ trait FileUploadTrait
         $extension = $file->getClientOriginalExtension();
         $updateFileName = Str::random(30) . '.' . $extension;
         $file->move(public_path($dir), $updateFileName);
+
         return $dir . '/' . $updateFileName; //uploads/image.jpg
     }
 
