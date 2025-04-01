@@ -57,7 +57,8 @@
                                                 <div class="my_listing_single">
                                                     <label>About Me <span class="text-danger">*</span></label>
                                                     <div class="input_area">
-                                                        <textarea cols="3" name="about" rows="3" placeholder="Your Intro Text" required>{{$user->about}}</textarea>
+                                                        <textarea cols="3" name="about" rows="3" placeholder="Your Intro Text"
+                                                                  required>{!! $user->about !!}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,8 +123,8 @@
                                             <label for="avatar">Avatar</label>
                                             <div class="profile_pic_upload">
                                                 <img src="{{asset($user->avatar)}}" name="avatar" alt="img" class="imf-fluid w-100">
+                                                <input type="file" name="avatar">
                                                 <input type="hidden" name="old_avatar" value="{{$user->avatar}}">
-                                                <input type="file">
                                             </div>
                                         </div>
 
@@ -131,8 +132,8 @@
                                             <label for="banner">Banner</label>
                                             <div class="profile_pic_upload">
                                                 <img src="{{asset($user->banner)}}" name="banner" alt="img" class="imf-fluid w-100">
+                                                <input type="file" name="banner">
                                                 <input type="hidden" name="old_banner" value="{{$user->banner}}">
-                                                <input type="file">
                                             </div>
                                         </div>
                                     </div>
