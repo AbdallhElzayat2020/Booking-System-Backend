@@ -28,23 +28,105 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="avatar">Avatar</label>
+                                            <label for="avatar">Avatar <span class="text-danger"> * </span></label>
                                             <div id="image-preview" class="image-preview mt-4">
                                                 <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="image" id="image-upload"/>
+                                                <input type="file" name="avatar" id="image-upload"/>
+                                            </div>
+                                            @error('avatar')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="banner">Banner </label>
+                                            <div id="image-preview-2" class="image-preview mt-4">
+                                                <label for="image-upload-2" id="image-label-2">Choose File</label>
+                                                <input type="file" name="banner" id="image-upload-2"/>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="banner">Banner</label>
-                                            <div id="image-preview-2" class="image-preview mt-4">
-                                                <label for="image-upload-2" id="image-label-2">Choose File</label>
-                                                <input type="file" name="image" id="image-upload-2"/>
-                                            </div>
+                                            <label for="name">Name <span class="text-danger"> * </span></label>
+                                            <input type="text" class="form-control" name="name" required id="name">
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email">Email <span class="text-danger"> * </span> </label>
+                                            <input type="text" class="form-control" name="email" required id="email">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">Phone <span class="text-danger"> * </span></label>
+                                            <input type="text" class="form-control" name="phone" required id="phone">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="Address">Address <span class="text-danger"> * </span></label>
+                                            <input type="text" class="form-control" name="address" required id="address">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="About">About <span class="text-danger"> * </span></label>
+                                            <textarea name="about" id="about" class="form-control" required cols="30" rows="10"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="website">Website</label>
+                                            <input type="text" class="form-control" name="website" id="website">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="fb_link">Facebook Link</label>
+                                            <input type="text" class="form-control" name="fb_link" id="fb_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="x_link">X Link</label>
+                                            <input type="text" class="form-control" name="x_link" id="x_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="in_link">LinkedIn Link</label>
+                                            <input type="text" class="form-control" name="in_link" id="in_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="wa_link">WhatsApp Link</label>
+                                            <input type="text" class="form-control" name="wa_link" id="wa_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="instra_link">Instagram Link</label>
+                                            <input type="text" class="form-control" name="instra_link" id="instra_link">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Update</button>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                             </form>
