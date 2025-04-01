@@ -1,7 +1,7 @@
 <div class="dashboard_sidebar">
     <span class="close_icon"><i class="far fa-times"></i></span>
-    <a href="dsahboard.html" class="dash_logo">
-        <img src="images/user_large_img.jpg" alt="logo" class="img-fluid">
+    <a href="{{ route('user.dashboard') }}" class="dash_logo">
+        <img src="{{asset(auth()->user()->avatar)}}" alt="logo" class="img-fluid">
     </a>
     <ul class="dashboard_link">
         <li><a class="active" href="{{ route('user.dashboard') }}"><i class="fas fa-tachometer"></i>Dashboard</a></li>
