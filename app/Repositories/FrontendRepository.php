@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\frontendRepositoryInterface;
+use App\Interfaces\FrontendRepositoryInterface;
 
-class frontendRepository implements frontendRepositoryInterface
+class FrontendRepository implements FrontendRepositoryInterface
 {
     public function index()
     {

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Interfaces\frontendRepositoryInterface;
+use App\Interfaces\FrontendRepositoryInterface;
 
 class FrontendController extends Controller
 {
     public $frontend;
 
-    public function __construct(frontendRepositoryInterface $frontend)
+    public function __construct(FrontendRepositoryInterface $frontend)
     {
         $this->frontend = $frontend;
     }

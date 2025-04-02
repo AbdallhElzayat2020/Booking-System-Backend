@@ -10,4 +10,9 @@ class FrontendHeroRepository implements FrontendHeroRepositoryInterface
     {
         // TODO: Implement index() method.
     }
+
+    public function update($request)
+    {
+        // TODO: Implement update() method.
+    }
 }

@@ -33,6 +33,7 @@ Route::group([
     Route::put('profile-password', [ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
 
     /* Hero Routes */
-    Route::resource('hero', HeroController::class);
+    Route::get('hero', [HeroController::class, 'index'])->name('hero.index');
+    Route::put('hero', [HeroController::class, 'update'])->name('hero.update');
 });
 

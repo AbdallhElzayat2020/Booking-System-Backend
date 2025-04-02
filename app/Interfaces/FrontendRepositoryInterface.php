@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface frontendRepositoryInterface
+interface FrontendRepositoryInterface
 {
     public function index();
 }
