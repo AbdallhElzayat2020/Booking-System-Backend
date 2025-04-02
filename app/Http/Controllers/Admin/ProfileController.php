@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    use FileUploadTrait;
 
 
     public $profile;

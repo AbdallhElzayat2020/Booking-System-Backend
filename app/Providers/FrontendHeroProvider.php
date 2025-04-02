@@ -2,18 +2,18 @@
 
 namespace App\Providers;
 
-use App\Interfaces\DashboardRepositoryInterface;
+use App\Interfaces\FrontendHeroRepositoryInterface;
 use App\Repositories\FrontendHeroRepository;
 use Illuminate\Support\ServiceProvider;
 
-class DashboardProvider extends ServiceProvider
+class FrontendHeroProvider extends ServiceProvider
 {
     /**
      * Register services.
      */
     public function register(): void
     {
-        $this->app->bind(DashboardRepositoryInterface::class, FrontendHeroRepository::class);
+        $this->app->bind(FrontendHeroRepositoryInterface::class, FrontendHeroRepository::class);
     }
 
     /**
