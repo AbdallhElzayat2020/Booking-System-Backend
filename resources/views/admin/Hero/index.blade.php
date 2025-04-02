@@ -11,7 +11,7 @@
             <h1>Profile</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item  ">Dashboard</div>
-                <div class="breadcrumb-item "><a href="{{ route('admin.profile') }}">Profile</a></div>
+                <div class="breadcrumb-item "><a href="{{ route('admin.hero.index') }}">Hero</a></div>
             </div>
         </div>
 
@@ -20,9 +20,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Update Profile</h4>
+                            <h4>Update Hero</h4>
                         </div>
                         <div class="card-body">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="">BackGround</label>
+                                    <div id="image-preview" class="image-preview mt-4 avatar-preview">
+                                        <label for="image-upload" id="image-label">Choose File</label>
+                                        <input type="file" name="image" id="image-upload"/>
+                                        <input type="hidden" name="old_image">
+                                    </div>
+                                    @error('image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title">
+                                    @error('title')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sub_title">Sub Title</label>
+                                    <input type="text" class="form-control" name="sub_title" id="sub_title">
+                                    @error('sub_title')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
