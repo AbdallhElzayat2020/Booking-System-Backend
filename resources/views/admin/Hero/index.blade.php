@@ -31,23 +31,23 @@
                                     <div id="image-preview" class="image-preview mt-4 avatar-preview">
                                         <label for="image-upload" id="image-label">Choose File</label>
                                         <input type="file" name="background" id="image-upload"/>
-                                        <input type="hidden" name="old_image">
+                                        <input type="hidden" name="old_background" value="{{@$hero->background}}">
                                     </div>
                                     @error('background')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" name="title" id="title">
+                                    <label for="title">Title <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="title" id="title" value="{{@$hero->title}}">
                                     @error('title')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="sub_title">Sub Title</label>
-                                    <input type="text" class="form-control" name="sub_title" id="sub_title">
+                                    <label for="sub_title">Sub Title <span class="text-danger">*</span></label>
+                                    <textarea type="text" style="height: 120px!important;" class="form-control" name="sub_title" id="sub_title">{{@$hero->sub_title}}</textarea>
                                     @error('sub_title')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -64,3 +64,16 @@
         </div>
     </section>
 @endsection
+
+@push('js')
+
+    <script>
+        $(document).ready(function () {
+            $('.avatar-preview').css({
+                'background-image': 'url({{ asset(@$hero->background) }})',
+                'background-size': 'cover',
+                'background-position': 'center center'
+            })
+        });
+    </script>
+@endpush

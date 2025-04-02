@@ -23,16 +23,19 @@ class HeroController extends Controller
 
     public function index(): View
     {
-        return view('admin.Hero.index');
+        $hero = Hero::first();
+        return view('admin.Hero.index', compact('hero'));
     }
 
     public function update(HeroUpdateRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $imgPath = $this->handleFileUpload($request, 'background');
+        $imgPath = $this->handleFileUpload($request, 'background', $request->old_background);
+
+        $hero = Hero::first();
         Hero::updateOrCreate(
             ['id' => 1],
             [
-                'background' => $imgPath ?? '',
+                'background' => !empty($imgPath) ? $imgPath : $request->old_background,
                 'title' => $request->title,
                 'sub_title' => $request->sub_title,
             ]
