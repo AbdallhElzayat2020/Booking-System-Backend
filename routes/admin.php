@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /* Dashboard Routes */
 Route::group([
@@ -35,5 +36,8 @@ Route::group([
     /* Hero Routes */
     Route::get('hero', [HeroController::class, 'index'])->name('hero.index');
     Route::put('hero', [HeroController::class, 'update'])->name('hero.update');
+
+    /* Categories Routes  */
+    Route::resource('categories', CategoryController::class);
 });
 
