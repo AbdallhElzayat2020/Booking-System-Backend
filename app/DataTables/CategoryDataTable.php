@@ -22,7 +22,27 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'category.action')
+            ->addColumn('action', function () {
+//                $edit = '<a href="#" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>';
+//                $delete = '<a href="#" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>';
+
+                return '<div class="d-flex">
+                            <a href="#" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>
+                            <a href="#" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
+                        </div>';
+            })
+            ->addColumn('Icon', function ($query) {
+                return '<img src="' . asset($query->icon_image) . '" alt="' . $query->name . '" style="width: 80px;">';
+            })
+
+
+            ->addColumn('Background', function ($query) {
+                return '<img src="' . asset($query->background_image) . '" alt="' . $query->name . '" style="width: 80px; height: 80px;">';
+            })
+//            ->editColumn('show_at_home', function ($query) {
+//                return $query->show_at_home ? 'Yes' : 'No';
+//            })
+            ->rawColumns(['Icon', 'Background', 'action'])
             ->setRowId('id');
     }
 
@@ -42,19 +62,19 @@ class CategoryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('category-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('category-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -63,15 +83,18 @@ class CategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('name'),
+            Column::make('Icon'),
+            Column::make('Background'),
+//            Column::make('show_at_home'),
+//            Column::make('status'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(150)
+                ->addClass('text-center'),
         ];
     }
 
