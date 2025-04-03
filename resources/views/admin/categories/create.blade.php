@@ -27,22 +27,60 @@
                             <form action="{{ route('admin.categories.update',1) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="">Background</label>
-                                    <div id="image-preview" class="image-preview mt-4 avatar-preview">
-                                        <label for="image-upload" id="image-label">Choose File</label>
-                                        <input type="file" name="background" id="image-upload"/>
-                                        <input type="hidden" name="old_background" value="">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Icon Image <span class="text-danger">*</span></label>
+                                            <div id="image-preview" class="image-preview mt-4 avatar-preview">
+                                                <label for="image-upload" id="image-label">Choose File</label>
+                                                <input type="file" name="icon_image" id="image-upload"/>
+                                            </div>
+                                            @error('icon_image')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    @error('background')
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Icon Image <span class="text-danger">*</span></label>
+                                            <div id="image-preview" class="image-preview mt-4 avatar-preview">
+                                                <label for="image-upload" id="image-label">Choose File</label>
+                                                <input type="file" name="background_image" id="image-upload"/>
+                                            </div>
+                                            @error('background_image')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name" id="name" value="">
+                                    @error('name')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="title">Title <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="title" id="title" value="">
-                                    @error('title')
+                                    <label for="show_at_home">Show At Home <span class="text-danger">*</span></label>
+                                    <select name="show_at_home" id="show_at_home" class="form-control">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    @error('show_at_home')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status">Status <span class="text-danger">*</span></label>
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="active">Active</option>
+                                        <option value="inactive">InActive</option>
+                                    </select>
+                                    @error('status')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
