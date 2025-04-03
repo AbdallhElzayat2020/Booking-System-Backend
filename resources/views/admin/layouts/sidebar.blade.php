@@ -26,7 +26,6 @@
                     <li class="{{setSidebarActive(['admin.hero.index'])}}"><a class="nav-link" href="{{ route('admin.hero.index') }}">Hero</a></li>
                 </ul>
             </li>
-
         </ul>
     </aside>
 </div>

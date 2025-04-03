@@ -24,6 +24,8 @@
                         </div>
                         <div class="card-body">
 
+                            {{ $dataTable->table() }}
+
                         </div>
                     </div>
                 </div>
@@ -34,14 +36,5 @@
 @endsection
 
 @push('js')
-
-    <script>
-        $(document).ready(function () {
-            $('.avatar-preview').css({
-                'background-image': 'url({{ asset(@$hero->background) }})',
-                'background-size': 'cover',
-                'background-position': 'center center'
-            })
-        });
-    </script>
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush

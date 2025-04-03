@@ -14,6 +14,7 @@
 <!-- Template JS File -->
 <script src="{{asset('assets/js/scripts.js')}}"></script>
 
+<script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 
 <script>
     @if($errors->any())
@@ -32,6 +33,5 @@
         no_label: false,                // Default: false
         success_callback: null          // Default: null
     });
-
 </script>
 @stack('js')
