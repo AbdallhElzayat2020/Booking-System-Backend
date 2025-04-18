@@ -22,10 +22,10 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function () {
+            ->addColumn('action', function ($query) {
                 return '<div class="d-flex">
-                            <a href="#" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>
-                            <a href="#" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
+                            <a href="' . route('admin.categories.edit', $query->slug) . '" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>
+                            <a href="" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
                         </div>';
             })
             ->addColumn('Icon', function ($query) {
