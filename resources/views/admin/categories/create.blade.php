@@ -45,7 +45,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Icon Image <span class="text-danger">*</span></label>
+                                            <label for="">Background Image <span class="text-danger">*</span></label>
                                             <div id="image-preview-2" class="image-preview mt-4 avatar-preview">
                                                 <label for="image-upload-2" id="image-label-2">Choose File</label>
                                                 <input type="file" name="background_image" id="image-upload-2"/>
@@ -102,7 +102,7 @@
 @endsection
 
 @push('js')
-    <script !src="">
+    <script>
         $.uploadPreview({
             input_field: "#image-upload-2",   // Default: .image-upload
             preview_box: "#image-preview-2",  // Default: .image-preview

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryStoreRequest;
+use App\Interfaces\AdminCategoryRepositoryInterface;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
@@ -12,7 +13,14 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    use FileUploadTrait;
+    public $category;
+
+    public function __construct(AdminCategoryRepositoryInterface $category)
+    {
+        $this->category = $category;
+    }
+
+
 
     /**
      * Display a listing of the resource.
@@ -24,7 +32,7 @@ class CategoryController extends Controller
 
     public function index(CategoryDataTable $dataTable)
     {
-        return $dataTable->render('admin.categories.index');
+        return $this->category->index($dataTable);
     }
 
     /**
@@ -40,21 +48,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-
-        $iconPath = $this->handleFileUpload($request, 'icon_image');
-        $backgroundPath = $this->handleFileUpload($request, 'background_image');
-
-        $category = new Category();
-        $category->icon_image = $iconPath;
-        $category->background_image = $backgroundPath;
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-        $category->show_at_home = $request->show_at_home;
-        $category->status = $request->status;
-        $category->save();
-
-        toastr()->success('Category added successfully.');
-        return to_route('admin.categories.index');
+        return $this->category->store($request);
     }
 
     /**

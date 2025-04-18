@@ -1,6 +1,7 @@
 <?php
 
 return [
+    App\Providers\AdminCategoryProvider::class,
     App\Providers\AdminProfileProvider::class,
     App\Providers\AppServiceProvider::class,
     App\Providers\DashboardProvider::class,
