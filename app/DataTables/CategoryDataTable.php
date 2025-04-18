@@ -25,7 +25,7 @@ class CategoryDataTable extends DataTable
             ->addColumn('action', function ($query) {
                 return '<div class="d-flex">
                             <a href="' . route('admin.categories.edit', $query->id) . '" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>
-                            <a href="" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
+                            <a href="' . route('admin.categories.destroy', $query->id) . '" class="btn btn-danger delete-item mx-1 "> <i class="fas fa-trash"></i></a>
                         </div>';
             })
             ->addColumn('Icon', function ($query) {

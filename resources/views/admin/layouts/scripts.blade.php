@@ -17,11 +17,14 @@
 {{--    Data Table cdn   --}}
 <script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 
+{{--  sweet alert  --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     @if($errors->any())
-        @foreach($errors->all() as $error)
-            toastr.error("{{ $error }}");
-        @endforeach
+    @foreach($errors->all() as $error)
+    toastr.error("{{ $error }}");
+    @endforeach
     @endif
 
 
@@ -34,5 +37,27 @@
         no_label: false,                // Default: false
         success_callback: null          // Default: null
     });
+
+    // sweet alert Delete button
+    $('body').on('click', '.delete-item', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ddd",
+            cancelButtonColor: "#f00",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    })
 </script>
 @stack('js')

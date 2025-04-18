@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryStoreRequest;
+use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Interfaces\AdminCategoryRepositoryInterface;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
@@ -19,7 +20,6 @@ class CategoryController extends Controller
     {
         $this->category = $category;
     }
-
 
 
     /**
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $slug)
+    public function update(CategoryUpdateRequest $request, string $slug)
     {
         return $this->category->update($request, $slug);
     }
