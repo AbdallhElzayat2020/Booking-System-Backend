@@ -28,11 +28,9 @@ class CategoryDataTable extends DataTable
                             <a href="#" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
                         </div>';
             })
-
             ->addColumn('Icon', function ($query) {
                 return '<img src="' . asset($query->icon_image) . '" alt="' . $query->name . '" style="width: 80px;">';
             })
-
             ->addColumn('Background', function ($query) {
                 return '<img src="' . asset($query->background_image) . '" alt="' . $query->name . '" style="width: 80px; height: 80px;">';
             })
@@ -40,6 +38,7 @@ class CategoryDataTable extends DataTable
 //            ->editColumn('show_at_home', function ($query) {
 //                return $query->show_at_home ? 'Yes' : 'No';
 //            })
+
             ->rawColumns(['Icon', 'Background', 'action'])
             ->setRowId('id');
     }
@@ -82,7 +81,7 @@ class CategoryDataTable extends DataTable
     {
         return [
 
-            Column::make('id'),
+            Column::make('id')->width(100),
             Column::make('name'),
             Column::make('Icon'),
             Column::make('Background'),
