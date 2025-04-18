@@ -14,6 +14,7 @@
 <!-- Template JS File -->
 <script src="{{asset('assets/js/scripts.js')}}"></script>
 
+{{--    Data Table cdn   --}}
 <script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
 
 <script>

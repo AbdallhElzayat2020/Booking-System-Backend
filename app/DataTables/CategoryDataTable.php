@@ -29,11 +29,9 @@ class CategoryDataTable extends DataTable
                             <a href="#" class="btn btn-danger mx-1 "> <i class="fas fa-trash"></i></a>
                         </div>';
             })
-
             ->addColumn('Icon', function ($query) {
                 return '<img src="' . asset($query->icon_image) . '" alt="' . $query->name . '" style="width: 80px;">';
             })
-
             ->addColumn('Background', function ($query) {
                 return '<img src="' . asset($query->background_image) . '" alt="' . $query->name . '" style="width: 80px; height: 80px;">';
             })

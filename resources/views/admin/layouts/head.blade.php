@@ -14,5 +14,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
+
+    {{--    Data Table cdn   --}}
     <link rel="stylesheet" href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
 </head>

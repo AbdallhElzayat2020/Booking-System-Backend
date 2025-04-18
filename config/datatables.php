@@ -64,7 +64,7 @@ return [
     ],
 
     /*
-     * Nulls last sql pattern for PostgreSQL & Oracle.
+     * Nulls last sql pattern for Postgre SQL & Oracle.
      * For MySQL, use 'CASE WHEN :column IS NULL THEN 1 ELSE 0 END, :column :direction'
      */
     'nulls_last_sql' => ':column :direction NULLS LAST',
