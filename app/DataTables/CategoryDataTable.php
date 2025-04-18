@@ -28,18 +28,30 @@ class CategoryDataTable extends DataTable
                             <a href="' . route('admin.categories.destroy', $query->id) . '" class="btn btn-danger delete-item mx-1 "> <i class="fas fa-trash"></i></a>
                         </div>';
             })
+
             ->addColumn('Icon', function ($query) {
                 return '<img src="' . asset($query->icon_image) . '" alt="' . $query->name . '" style="width: 80px;">';
             })
+
             ->addColumn('Background', function ($query) {
                 return '<img src="' . asset($query->background_image) . '" alt="' . $query->name . '" style="width: 80px; height: 80px;">';
             })
 
-//            ->editColumn('show_at_home', function ($query) {
-//                return $query->show_at_home ? 'Yes' : 'No';
-//            })
+            ->addColumn('show_at_home', function ($query) {
+                if ($query->show_at_home === 1) {
+                    return '<span class="badge badge-success">Yes</span>';
+                }
+                return '<span class="badge badge-danger">No</span>';
+            })
 
-            ->rawColumns(['Icon', 'Background', 'action'])
+            ->addColumn('status', function ($query) {
+                if ($query->status === 'active') {
+                    return '<span class="badge badge-success">Active</span>';
+                }
+                return '<span class="badge badge-danger">InActive</span>';
+            })
+
+            ->rawColumns(['Icon', 'Background', 'action', 'show_at_home', 'status'])
             ->setRowId('id');
     }
 
@@ -85,8 +97,8 @@ class CategoryDataTable extends DataTable
             Column::make('name'),
             Column::make('Icon'),
             Column::make('Background'),
-//            Column::make('show_at_home'),
-//            Column::make('status'),
+            Column::make('show_at_home'),
+            Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
