@@ -41,6 +41,8 @@
     // sweet alert Delete button
     $('body').on('click', '.delete-item', function (e) {
         e.preventDefault();
+        let url = $(this).attr('href');
+
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -51,11 +53,32 @@
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
+
+                $.ajax({
+                    method: "DELETE",
+                    url: url,
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function (data) {
+                        if(data.status === 'success'){
+                            Swal.fire({
+                                title: "Deleted!",
+                                responseText: data.message,
+                                icon: "success",
+                            });
+                            window.location.reload();
+                        }
+                    },
+                    error: function (status, err) {
+                        console.log(err)
+                    },
                 });
+                // Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                // });
             }
         });
     })

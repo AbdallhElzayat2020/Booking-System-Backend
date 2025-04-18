@@ -65,4 +65,21 @@ class AdminCategoryRepository implements AdminCategoryRepositoryInterface
         toastr()->success('Category Updated successfully.');
         return to_route('admin.categories.index');
     }
+
+    public function destroy($id)
+    {
+//        try {
+        $category = Category::findOrFail($id);
+
+        $this->deleteFile($category->icon_image);
+        $this->deleteFile($category->background_image);
+
+        $category->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Category deleted successfully.']);
+//        } catch (\Exception $e) {
+//            return response()->json(['status' => 'error', 'message' => 'Category not found.']);
+//        }
+
+    }
 }

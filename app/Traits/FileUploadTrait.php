@@ -30,9 +30,12 @@ trait FileUploadTrait
     }
 
 //    handleFileDelete
-    public function deleteFile(string $path)
+    public function deleteFile(string $path): void
     {
-        if ($path && File::exists(public_path($path))) {
+        // delete old file
+        $exculudedFolder = '/default';
+
+        if ($path && File::exists(public_path($path)) && strpos($path, $exculudedFolder) !== 0) {
             File::delete(public_path($path));
         }
     }
