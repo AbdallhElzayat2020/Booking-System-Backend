@@ -24,7 +24,7 @@
                             <h4>Edit Category</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.categories.update',$category->slug) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.categories.update',$category->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -36,7 +36,7 @@
                                             <div id="image-preview" class="image-preview mt-4 icon-image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
                                                 <input type="file" name="icon_image" id="image-upload"/>
-                                                <input type="hidden" name="old_icon_image" value="{{$category->icon_image}}"/>
+                                                <input type="hidden" name="old_icon" value="{{$category->icon_image}}"/>
                                             </div>
                                             @error('icon_image')
                                             <p class="text-danger">{{ $message }}</p>
@@ -50,7 +50,7 @@
                                             <div id="image-preview-2" class="image-preview mt-4 background-image-preview">
                                                 <label for="image-upload-2" id="image-label-2">Choose File</label>
                                                 <input type="file" name="background_image" id="image-upload-2"/>
-                                                <input type="hidden" name="old_background_image" value="{{$category->background_image}}"/>
+                                                <input type="hidden" name="old_background" value="{{$category->background_image}}"/>
                                             </div>
                                             @error('background_image')
                                             <p class="text-danger">{{ $message }}</p>

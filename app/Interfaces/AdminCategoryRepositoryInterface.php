@@ -11,4 +11,8 @@ interface AdminCategoryRepositoryInterface
     public function create();
 
     public function store($request);
+
+    public function edit($id);
+
+    public function update($request, $id);
 }

@@ -7,6 +7,7 @@ use App\Interfaces\AdminCategoryRepositoryInterface;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class AdminCategoryRepository implements AdminCategoryRepositoryInterface
 {
@@ -17,12 +18,12 @@ class AdminCategoryRepository implements AdminCategoryRepositoryInterface
         return $dataTable->render('admin.categories.index');
     }
 
-    public function create()
+    public function create(): View
     {
-        // TODO: Implement create() method.
+        return view('admin.categories.create');
     }
 
-    public function store($request)
+    public function store($request): \Illuminate\Http\RedirectResponse
     {
 
         $iconPath = $this->handleFileUpload($request, 'icon_image');
@@ -38,6 +39,30 @@ class AdminCategoryRepository implements AdminCategoryRepositoryInterface
         $category->save();
 
         toastr()->success('Category added successfully.');
+        return to_route('admin.categories.index');
+    }
+
+    public function edit($id): View
+    {
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update($request, $id)
+    {
+        $iconPath = $this->handleFileUpload($request, 'icon_image', $request->old_icon);
+        $backgroundPath = $this->handleFileUpload($request, 'background_image', $request->old_background);
+
+        $category = Category::findOrFail($id);
+        $category->icon_image = !empty($iconPath) ? $iconPath : $request->old_icon;
+        $category->background_image = !empty($backgroundPath) ? $backgroundPath : $request->old_background;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        $category->show_at_home = $request->show_at_home;
+        $category->status = $request->status;
+        $category->save();
+
+        toastr()->success('Category Updated successfully.');
         return to_route('admin.categories.index');
     }
 }
