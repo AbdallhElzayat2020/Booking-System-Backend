@@ -17,6 +17,7 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Listings</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{ route('admin.categories.index') }}">Categories</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.location.index') }}">Location</a></li>
                 </ul>
             </li>
 
@@ -26,6 +27,7 @@
                     <li class="{{setSidebarActive(['admin.hero.index'])}}"><a class="nav-link" href="{{ route('admin.hero.index') }}">Hero</a></li>
                 </ul>
             </li>
+
         </ul>
     </aside>
 </div>

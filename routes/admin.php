@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Admin\LocationController;
 /* Dashboard Routes */
 Route::group([
     'prefix' => 'admin',
@@ -39,5 +39,8 @@ Route::group([
 
     /* Categories Routes  */
     Route::resource('categories', CategoryController::class);
+
+    /* Location Routes  */
+    Route::resource('location', LocationController::class);
 });
 

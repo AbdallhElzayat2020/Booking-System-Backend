@@ -26,8 +26,9 @@ trait FileUploadTrait
         $updateFileName = Str::random(30) . '.' . $extension;
         $file->move(public_path($dir), $updateFileName);
 
-        return $dir . '/' . $updateFileName; //uploads/image.jpg
+        return $dir . '/' . $updateFileName; /* uploads/image.jpg */
     }
+
 
 //    handleFileDelete
     public function deleteFile(string $path): void
