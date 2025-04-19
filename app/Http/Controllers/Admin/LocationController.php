@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\LocationDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\LocationStoreRequest;
 use App\Interfaces\AdminLocationRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -30,15 +31,15 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return $this->location->create();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LocationStoreRequest $request)
     {
-        //
+        return $this->location->store($request);
     }
 
     /**

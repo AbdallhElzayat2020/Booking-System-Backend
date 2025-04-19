@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title','Create Category')
+@section('title','Create Location')
 
 @section('content')
     <section class="section">
@@ -8,10 +8,10 @@
             <div class="section-header-back">
                 <a href="{{ route('admin.dashboard.index') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Category</h1>
+            <h1>Location</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item">Dashboard</div>
-                <div class="breadcrumb-item">Categories</div>
+                <div class="breadcrumb-item">Locations</div>
                 <div class="breadcrumb-item "><a href="javascript:;">Create</a></div>
             </div>
         </div>
@@ -24,43 +24,13 @@
                             <h4>Create Category</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.location.store') }}" method="post">
                                 @csrf
                                 @method('post')
 
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Icon Image <span class="text-danger">*</span></label>
-                                            <div id="image-preview" class="image-preview mt-4 avatar-preview">
-                                                <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="icon_image" id="image-upload"/>
-                                            </div>
-                                            @error('icon_image')
-                                            <p class="text-danger">{{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Background Image <span class="text-danger">*</span></label>
-                                            <div id="image-preview-2" class="image-preview mt-4 avatar-preview">
-                                                <label for="image-upload-2" id="image-label-2">Choose File</label>
-                                                <input type="file" name="background_image" id="image-upload-2"/>
-                                            </div>
-                                            @error('background_image')
-                                            <p class="text-danger">{{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                </div>
-
                                 <div class="form-group">
                                     <label for="name">Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="Enter Category Name">
+                                    <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" placeholder="Enter Location Name">
                                     @error('name')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror

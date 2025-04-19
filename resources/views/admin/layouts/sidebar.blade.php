@@ -13,11 +13,11 @@
                 </a>
             </li>
 
-            <li class="dropdown {{setSidebarActive(['admin.categories.*'])}}">
+            <li class="dropdown {{setSidebarActive(['admin.categories.*', 'admin.location.*'])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Listings</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('admin.categories.index') }}">Categories</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.location.index') }}">Location</a></li>
+                    <li class="{{setSidebarActive(['admin.categories.*'])}}"><a class="nav-link" href="{{ route('admin.categories.index') }}">Categories</a></li>
+                    <li class="{{setSidebarActive(['admin.location.*'])}}"><a class="nav-link" href="{{ route('admin.location.index') }}">Location</a></li>
                 </ul>
             </li>
 
