@@ -22,7 +22,28 @@ class LocationDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'location.action')
+            ->addColumn('action', function ($query) {
+                return '<div class="d-flex">
+                            <a href="' . route('admin.location.edit', $query->id) . '" class="btn btn-primary mx-1 "> <i class="fas fa-edit"></i> </a>
+                            <a href="' . route('admin.location.destroy', $query->id) . '" class="btn btn-danger delete-item mx-1 "> <i class="fas fa-trash"></i></a>
+                        </div>';
+            })
+
+            ->addColumn('show_at_home', function ($query) {
+                if ($query->show_at_home === 1) {
+                    return '<span class="badge badge-success">Yes</span>';
+                }
+                return '<span class="badge badge-danger">No</span>';
+            })
+
+            ->addColumn('status', function ($query) {
+                if ($query->status === 'active') {
+                    return '<span class="badge badge-success">Active</span>';
+                }
+                return '<span class="badge badge-danger">InActive</span>';
+            })
+
+            ->rawColumns(['show_at_home', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -42,19 +63,19 @@ class LocationDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('location-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('location-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->orderBy(1)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -63,15 +84,16 @@ class LocationDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('name'),
+            Column::make('show_at_home'),
+            Column::make('status'),
+            Column::computed('action')
+                ->exportable(false)
+                ->printable(false)
+                ->width(150)
+                ->addClass('text-center'),
         ];
     }
 

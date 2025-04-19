@@ -34,18 +34,38 @@ class AdminLocationRepository implements AdminLocationRepositoryInterface
         return to_route('admin.location.index');
     }
 
-    public function edit($id)
+    public function edit($id): View
     {
-        // TODO: Implement edit() method.
+        $location = Location::findOrFail($id);
+        return view('admin.location.edit', compact('location'));
     }
 
-    public function update($request, $id)
+    public function update($request, $id): \Illuminate\Http\RedirectResponse
     {
-        // TODO: Implement update() method.
+        $location = Location::findOrFail($id);
+        $location->name = $request->name;
+        $location->slug = Str::slug($request->name);
+        $location->show_at_home = $request->show_at_home;
+        $location->status = $request->status;
+        $location->save();
+
+        toastr()->success('added successfully.');
+
+        return to_route('admin.location.index');
     }
 
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
-        // TODO: Implement destroy() method.
+        try {
+            $category = Location::findOrFail($id);
+
+            $category->delete();
+
+            return response()->json(['status' => 'success', 'message' => 'deleted successfully.']);
+        } catch (\Exception $e) {
+            logger($e);
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
+
     }
 }

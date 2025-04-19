@@ -68,18 +68,18 @@ class AdminCategoryRepository implements AdminCategoryRepositoryInterface
 
     public function destroy($id)
     {
-//        try {
-        $category = Category::findOrFail($id);
+        try {
+            $category = Category::findOrFail($id);
 
-        $this->deleteFile($category->icon_image);
-        $this->deleteFile($category->background_image);
+            $this->deleteFile($category->icon_image);
+            $this->deleteFile($category->background_image);
 
-        $category->delete();
+            $category->delete();
 
-        return response()->json(['status' => 'success', 'message' => 'Category deleted successfully.']);
-//        } catch (\Exception $e) {
-//            return response()->json(['status' => 'error', 'message' => 'Category not found.']);
-//        }
+            return response()->json(['status' => 'success', 'message' => 'Category deleted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'Category not found.']);
+        }
 
     }
 }

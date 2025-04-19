@@ -71,8 +71,8 @@
                                 <div class="form-group">
                                     <label for="show_at_home">Show At Home <span class="text-danger">*</span></label>
                                     <select name="show_at_home" id="show_at_home" class="form-control">
-                                        <option @selected(old('show_at_home', $category->show_at_home) === '0' ) value="0">No</option>
-                                        <option @selected(old('show_at_home', $category->show_at_home) === '1' ) value="1">Yes</option>
+                                        <option @selected(old('show_at_home', $category->show_at_home) === 0 ) value="0">No</option>
+                                        <option @selected(old('show_at_home', $category->show_at_home) === 1 ) value="1">Yes</option>
                                     </select>
                                     @error('show_at_home')
                                     <p class="text-danger">{{ $message }}</p>

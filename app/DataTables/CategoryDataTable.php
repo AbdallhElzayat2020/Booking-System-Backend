@@ -74,16 +74,8 @@ class CategoryDataTable extends DataTable
             ->setTableId('category-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
+            ->orderBy(0)
+            ->selectStyleSingle();
     }
 
     /**

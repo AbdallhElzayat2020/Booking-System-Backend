@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\LocationDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LocationStoreRequest;
+use App\Http\Requests\Admin\LocationUpdateRequest;
 use App\Interfaces\AdminLocationRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -42,28 +43,21 @@ class LocationController extends Controller
         return $this->location->store($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        return $this->location->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LocationUpdateRequest $request, string $id)
     {
-        //
+        return $this->location->update($request, $id);
     }
 
     /**
@@ -71,6 +65,6 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->location->destroy($id);
     }
 }

@@ -61,24 +61,25 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success: function (data) {
-                        if(data.status === 'success'){
+                        if (data.status === 'success') {
                             Swal.fire({
                                 title: "Deleted!",
                                 responseText: data.message,
                                 icon: "success",
                             });
                             window.location.reload();
+                        } else if (data.status === 'error') {
+                            Swal.fire({
+                                title: "Error!",
+                                responseText: data.message,
+                                icon: "error",
+                            });
                         }
                     },
                     error: function (status, err) {
                         console.log(err)
                     },
                 });
-                // Swal.fire({
-                //     title: "Deleted!",
-                //     text: "Your file has been deleted.",
-                //     icon: "success"
-                // });
             }
         });
     })
